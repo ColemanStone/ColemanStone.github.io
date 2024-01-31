@@ -16,3 +16,9 @@ p {
     text-align: center;
     margin: 20px;
 }
+
+button {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px;
+}
