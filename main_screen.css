@@ -19,13 +19,13 @@ h1 {
 }
 
 p {
-    color: #666;
+    color: #ffffff;
     font-size: 16px;
     line-height: 1.5;
 }
 
-div nav {
-    background-color: #333;
-    color: #00ffa2;
-    padding: 20px;
+button {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px;
 }
