@@ -10,8 +10,7 @@ h1 {
     color: #f08815;
     text-align: center;
     margin: 20px;
-    transition : transform 1s;
-
+    animation: 3s ease 0s infinite normal none running mymove;
 }
 
 h2 {
@@ -32,7 +31,7 @@ p {
     margin-right: auto;
     width: 50%;
     font-family: 'Times New Roman', Times, serif;
-    transition : transform 1s;
+    animation: 3s ease 0s infinite normal none running mymove;
 }
 
 img {
@@ -42,6 +41,7 @@ img {
     width: 50%;
     height: 50%;
     border-radius: 20%;
+    animation: 3s ease 0s infinite normal none running mymove;
 }
 a {
     color: #00eaff;
@@ -50,6 +50,7 @@ a {
     font-family: 'Times New Roman', Times, serif;
     text-decoration:dashed;
     cursor: crosshair;
+    animation: 3s ease 0s infinite normal none running mymove;
 }
 h3{
     font-family: 'Times New Roman', Times, serif;
@@ -63,4 +64,12 @@ h4{
     color: #ffffff;
     text-align: center;
     margin: 20px;
+    animation: 3s ease 0s infinite normal none running mymove;
+}
+button{
+    font-family: 'Times New Roman', Times, serif;
+    color: #000000;
+    text-align: center;
+    margin: 20px;
+    animation: 3s ease 0s infinite normal none running mymove;
 }
