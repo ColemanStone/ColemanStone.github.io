@@ -10,6 +10,7 @@ h1 {
     color: #f08815;
     text-align: center;
     margin: 20px;
+    transition : transform 1s;
 
 }
 
@@ -30,6 +31,7 @@ p {
     margin-right: auto;
     width: 50%;
     font-family: 'Times New Roman', Times, serif;
+    transition : transform 1s;
 }
 
 img {
@@ -37,6 +39,11 @@ img {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition : transform 0.5s;
 }
 a {
     color: #00eaff;
