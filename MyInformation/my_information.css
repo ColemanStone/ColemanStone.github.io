@@ -41,7 +41,6 @@ img {
     width: 50%;
     height: 50%;
     border-radius: 20%;
-    animation: 3s ease 0s infinite normal none running mymove;
 }
 
 a {
@@ -69,7 +68,8 @@ h4 {
     margin: 20px;
     animation: 3s ease 0s infinite normal none running mymove;
 }
-button{
+
+button {
     background-color: #f08815;
     color: white;
     padding: 14px 20px;
