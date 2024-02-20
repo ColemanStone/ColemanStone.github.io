@@ -26,18 +26,19 @@
         </section>
     </main>
     <footer>
-        <h2>Send an Email</h2>
-
-        <form id="emailForm">
+        <h2>Send me an email</h2>
+        <form id="contactForm">
+            <label for="userEmail">Your Email:</label><br>
+            <input type="email" id="userEmail" name="userEmail" required><br>
             <label for="subject">Subject:</label><br>
             <input type="text" id="subject" name="subject" required><br>
             <label for="message">Message:</label><br>
-            <textarea id="message" name="message" rows="4" required></textarea><br>
+            <textarea id="message" name="message" required></textarea><br>
             <button type="submit">Send Email</button>
         </form>
-
+    
         <script src="emailSender.js"></script>
-
+        
     </footer>
 </body>
 
