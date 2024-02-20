@@ -1,19 +1,10 @@
-</html>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coleman Stone's Project Website</title>
-    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init("3iUytdM_HdHpqRSCh"); 
-        })();
-    </script>
-
 </head>
 
 <body>
@@ -35,30 +26,36 @@
     </main>
     <footer>
         <h2>Send me an email</h2>
-        <form id="contactForm">
+        <form id="contactForm" onsubmit="submitForm(event)">
             <label for="user_email">Your Email:</label><br>
             <input type="email" id="user_email" name="user_email" required><br>
             <label for="subject">Subject:</label><br>
             <input type="text" id="subject" name="subject" required><br>
             <label for="message">Message:</label><br>
             <textarea id="message" name="message" required></textarea><br>
-            <input type="button" value="Send" onclick="sendEmail()">
+            <button type="submit">Send</button>
         </form>
-    
-        <script type="text/javascript">
-            function sendEmail() {
-                emailjs.sendForm('service_ryk5m6i', 'template_h8xvvt8', '#contactForm')
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    alert("Email sent successfully!");
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    alert("Failed to send email.");
-                });
-            }
-        </script>
-
     </footer>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Gather form data
+            var userEmail = document.getElementById('user_email').value;
+            var subject = document.getElementById('subject').value;
+            var message = document.getElementById('message').value;
+
+            // Construct the URL with encoded parameters
+            var url = 'https://colemanstone.github.io/?' +
+                'user_email=' + encodeURIComponent(userEmail) +
+                '&subject=' + encodeURIComponent(subject) +
+                '&message=' + encodeURIComponent(message);
+
+            // Redirect to the constructed URL
+            window.location.href = url;
+        }
+    </script>
 </body>
 
 </html>
