@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coleman Stone's Project Website</title>
 </head>
+
 <body>
     <header>
         <h1>Welcome to Coleman Stone's Portfolio</h1>
@@ -19,11 +21,24 @@
     <main>
         <section id="about-me">
             <h2>About Me</h2>
-            <p>Currently a student at Indiana University Kokomo, I am passionate about web development, music production, and technology. This website showcases my professional journey, skills, and projects.</p>
+            <p>Currently a student at Indiana University Kokomo, I am passionate about web development, music
+                production, and technology. This website showcases my professional journey, skills, and projects.</p>
         </section>
     </main>
     <footer>
-        <p>Contact me at: <a href="mailto:Stonecoleman4563@gmail.com">Stonecoleman4563@gmail.com</a></p>
+        <h2>Send an Email</h2>
+
+        <form id="emailForm">
+            <label for="subject">Subject:</label><br>
+            <input type="text" id="subject" name="subject" required><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br>
+            <button type="submit">Send Email</button>
+        </form>
+
+        <script src="emailSender.js"></script>
+
     </footer>
 </body>
+
 </html>
