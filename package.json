@@ -1,0 +1,26 @@
+{
+  "name": "colemanstone.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "project_home_page.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColemanStone/ColemanStone.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ColemanStone/ColemanStone.github.io/issues"
+  },
+  "homepage": "https://github.com/ColemanStone/ColemanStone.github.io#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.9"
+  }
+}
