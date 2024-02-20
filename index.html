@@ -8,8 +8,8 @@
     <title>Coleman Stone's Project Website</title>
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
     <script type="text/javascript">
-        (function () {
-            emailjs.init("3iUytdM_HdHpqRSCh");
+        (function(){
+            emailjs.init("3iUytdM_HdHpqRSCh"); 
         })();
     </script>
 
@@ -43,40 +43,21 @@
             <textarea id="message" name="message" required></textarea><br>
             <input type="submit" value="Send">
         </form>
-
+    
         <script type="text/javascript">
             function sendEmail() {
                 emailjs.sendForm('service_ryk5m6i', 'template_h8xvvt8', '#contactForm')
-                    .then(function (response) {
-                        console.log('SUCCESS!', response.status, response.text);
-                        alert("Email sent successfully!");
-                    }, function (error) {
-                        console.log('FAILED...', error);
-                        alert("Failed to send email.");
-                    });
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert("Email sent successfully!");
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert("Failed to send email.");
+                });
             }
         </script>
 
     </footer>
-    <script>
-        function submitForm(event) {
-            event.preventDefault(); // Prevent the form from submitting normally
-
-            // Gather form data
-            var userEmail = document.getElementById('user_email').value;
-            var subject = document.getElementById('subject').value;
-            var message = document.getElementById('message').value;
-
-            // Construct the URL with encoded parameters
-            var url = 'https://colemanstone.github.io/?' +
-                'user_email=' + encodeURIComponent(userEmail) +
-                '&subject=' + encodeURIComponent(subject) +
-                '&message=' + encodeURIComponent(message);
-
-            // Redirect to the constructed URL
-            window.location.href = url;
-        }
-    </script>
 </body>
 
 </html>
