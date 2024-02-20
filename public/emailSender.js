@@ -15,12 +15,20 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         },
         body: JSON.stringify(formData),
     })
-    .then(response => response.json())
+    .then(response => {
+        // Check if the response is successful; if not, throw an error
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
-        alert('Email sent successfully!');
+        // Handle the successful response here
+        alert(data.message); // Use the server's response message
     })
     .catch((error) => {
+        // Handle any errors that occurred during the fetch
         console.error('Error:', error);
-        alert('Error sending email.');
+        alert('Error sending email. Please check the console for more details.');
     });
 });
