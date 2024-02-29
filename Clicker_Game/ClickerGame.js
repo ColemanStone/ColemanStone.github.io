@@ -1,13 +1,8 @@
-import React from "react";
+let score = 0;
+const button = document.createElement('clicker-button');
+const scoreElement = document.getElementById('score');
 
-function ClickerGame() {
-  const [count, setCount] = React.useState(0);
-
-  return (
-    <div>
-      <h1>Clicker Game</h1>
-      <p>{count}</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
-    </div>
-  );
-}
+button.addEventListener('click', () => {
+    score++;
+    scoreElement.innerText = score;
+});
