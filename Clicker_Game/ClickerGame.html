@@ -1,13 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Clicker Game</title>
 </head>
 <body>
-    <button id="clicker-button">Click Me!</button>
-    <p id="clicker-counter">0</p>
+    <p>Score: <span id="score">0</span></p>
+    <img src="acoustic-cartoon-guitar-vector.jpg" alt="Guitar" style="width: 100px; height: 100px;" onclick="addToScore(clickingPower)">
+    <button onclick="buyCursors()">Buy Cursor [<span id="cursorCost">100</span>] -- <span id="cursors">0</span></button>
+    <button onclick="buyPedals()">Buy Guitar Pedals [<span id="pedalCost">500</span>] -- <span id="pedals">0</span></button>
+    <script>
+        var score = 0;
+        var clickingPower = 10;
+        var cursorCost = 100;
+        var cursors = 0;
+        var pedalCost = 500;
+        var pedals = 0;
 
-    <script type="text/javascript" src="ClickerGame.js"></script>
+        function buyPedals(){
+            if(score >= pedalCost){
+                score = score - pedalCost;
+                pedals = pedals + 1;
+                pedalCost = Math.round(pedalCost * 1.2);
+                document.getElementById("score").innerHTML = score;
+                document.getElementById("pedalCost").innerHTML = pedalCost;
+                document.getElementById("pedals").innerHTML = pedals;
+
+
+            }
+        }
+
+        function buyCursors(){
+            if(score >= cursorCost){
+                score = score - cursorCost;
+                cursors = cursors + 1;
+                cursorCost = Math.round(cursorCost * 1.2);
+                document.getElementById("score").innerHTML = score;
+                document.getElementById("cursorCost").innerHTML = cursorCost;
+                document.getElementById("cursors").innerHTML = cursors;
+
+
+            }
+        }
+        function addToScore(amount){
+            score = score + amount;
+            document.getElementById("score").innerHTML = score;
+        }
+
+        setInterval(function(){
+            score = score + cursors;
+            score = score + pedals * 5;
+            document.getElementById("score").innerHTML = score;
+        }, 1000);
+    </script>
 </body>
 </html>
