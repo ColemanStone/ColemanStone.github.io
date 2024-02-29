@@ -1,77 +1,77 @@
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Clicker Game</title>
 </head>
 <body>
-    <p>Score: <span id="score">0</span></p>
-    <p>Cursor Speed: <span id="cursorSpeedDisplay">0</span></p>
-    <img src="acoustic-cartoon-guitar-vector.jpg" alt="Guitar" style="width: 100px; height: 100px;" onclick="addToScore(clickingPower)">
-    <button onclick="buyCursors()">Buy Cursor [<span id="cursorCost">100</span>] -- <span id="cursors">0</span></button>
-    <button onclick="upgradeCursors()">Upgrade Cursor [<span id="cursorUpgradeCost">250</span>] -- <span id="cursorsUpgrade">0</span></button>
-    <button onclick="buyPedals()">Buy Guitar Pedals [<span id="pedalCost">500</span>] -- <span id="pedals">0</span></button>
-    <button onclick="upgradeCursorSpeed()">Upgrade Cursor Speed [<span id="cursorSpeedCost">300</span>]</button>
-    <script>
-        var score = 0;
-        var clickingPower = 10;
-        var cursorCost = 100;
-        var cursorUpgradeCost = 250;
-        var cursorUpgrade = 0.5;
-        var cursorSpeed = 0;
-        var cursorSpeedCost = 250;
-        var cursors = 0;
-        var pedalCost = 500;
-        var pedals = 0;
-        var interval = 1000;
+<p>Score: <span id="score">0</span></p>
+<p>Cursor Speed: <span id="cursorSpeedDisplay">0</span></p>
+<img src="acoustic-cartoon-guitar-vector.jpg" alt="Guitar" style="width: 100px; height: 100px;" onclick="addToScore(clickingPower)">
+<button onclick="buyCursors()">Buy Cursor [<span id="cursorCost">100</span>] -- <span id="cursors">0</span></button>
+<button onclick="buyPedals()">Buy Guitar Pedals [<span id="pedalCost">500</span>] -- <span id="pedals">0</span></button>
+<button onclick="upgradeCursorSpeed()">Upgrade Cursor Speed [<span id="cursorSpeedCost">300</span>]</button>
+<script>
+    var score = 0;
+    var clickingPower = 10;
+    var cursorCost = 100;
+    var cursorSpeed = 0;
+    var cursorSpeedCost = 250;
+    var cursors = 0;
+    var pedalCost = 500;
+    var pedals = 0;
+    var interval = 1000; // Initial interval for the automatic score increment
+    var intervalId = setInterval(autoIncrementScore, interval); // Store the interval ID for later reference
 
-        function buyPedals(){
-            if(score >= pedalCost){
-                score = score - pedalCost;
-                pedals = pedals + 1;
-                pedalCost = Math.round(pedalCost * 1.2);
-                document.getElementById("score").innerHTML = score;
-                document.getElementById("pedalCost").innerHTML = pedalCost;
-                document.getElementById("pedals").innerHTML = pedals;
+    function autoIncrementScore() {
+        score += cursors;
+        score += pedals * 5;
+        document.getElementById("score").innerHTML = score;
+    }
 
-
-            }
-        }
-
-        function buyCursors(){
-            if(score >= cursorCost){
-                score = score - cursorCost;
-                cursors = cursors + 1;
-                cursorCost = Math.round(cursorCost * 1.2);
-                document.getElementById("score").innerHTML = score;
-                document.getElementById("cursorCost").innerHTML = cursorCost;
-                document.getElementById("cursors").innerHTML = cursors;
-
-
-            }
-        }
-
-        function upgradeCursorSpeed() {
-            if(score >= cursorSpeedCost){
-                score = score - cursorSpeedCost;
-                cursorSpeed = cursorSpeed + 100; // increase cursor speed
-                cursorSpeedCost = Math.round(cursorSpeedCost * 1.2); // increase the cost for the next upgrade
-                interval = interval - cursorSpeed; // decrease the interval
-                console.log("New interval time: " + (interval - cursorSpeed)); // print the new interval time
-                document.getElementById("score").innerHTML = score;
-                document.getElementById("cursorSpeedCost").innerHTML = cursorSpeedCost;
-                document.getElementById("cursorSpeedDisplay").innerHTML = cursorSpeed; // update cursor speed display
-            }
-        }
-        function addToScore(amount){
-            score = score + amount;
+    function buyCursors() {
+        if(score >= cursorCost) {
+            score -= cursorCost;
+            cursors += 1;
+            cursorCost = Math.round(cursorCost * 1.2);
             document.getElementById("score").innerHTML = score;
+            document.getElementById("cursorCost").innerHTML = cursorCost;
+            document.getElementById("cursors").innerHTML = cursors;
         }
+    }
 
-        setInterval(function(){
-            score = score + cursors;
-            score = score + pedals * 5;
+    function buyPedals() {
+        if(score >= pedalCost) {
+            score -= pedalCost;
+            pedals += 1;
+            pedalCost = Math.round(pedalCost * 1.2);
             document.getElementById("score").innerHTML = score;
-        }, interval - cursorSpeed);
-    </script>
+            document.getElementById("pedalCost").innerHTML = pedalCost;
+            document.getElementById("pedals").innerHTML = pedals;
+        }
+    }
+
+    function upgradeCursorSpeed() {
+        if(score >= cursorSpeedCost) {
+            score -= cursorSpeedCost;
+            cursorSpeed += 100; // Increase cursor speed
+            cursorSpeedCost = Math.round(cursorSpeedCost * 1.2); // Increase the cost for the next upgrade
+            interval -= cursorSpeed; // Decrease the interval for faster score increment
+
+            // Update the interval timer
+            clearInterval(intervalId);
+            intervalId = setInterval(autoIncrementScore, Math.max(100, interval)); // Ensure interval does not become too small
+
+            document.getElementById("score").innerHTML = score;
+            document.getElementById("cursorSpeedCost").innerHTML = cursorSpeedCost;
+            document.getElementById("cursorSpeedDisplay").innerHTML = cursorSpeed;
+        }
+    }
+
+    function addToScore(amount) {
+        score += amount;
+        document.getElementById("score").innerHTML = score;
+    }
+</script>
 </body>
 </html>
