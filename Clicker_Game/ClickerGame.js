@@ -1,6 +1,6 @@
 let score = 0;
-const button = document.createElement('clicker-button');
-const scoreElement = document.getElementById('score');
+const button = document.getElementById('clicker-button');
+const scoreElement = document.getElementById('clicker-counter');
 
 button.addEventListener('click', () => {
     score++;
