@@ -3,14 +3,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Clicker Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <p>Score: <span id="score">0</span></p>
 <p>Cursor Speed: <span id="cursorSpeedDisplay">0</span></p>
 <img src="acoustic-cartoon-guitar-vector.jpg" alt="Guitar" style="width: 100px; height: 100px;" onclick="addToScore(clickingPower)">
 <button onclick="buyCursors()">Buy Cursor [<span id="cursorCost">100</span>] -- <span id="cursors">0</span></button>
-<button onclick="buyPedals()">Buy Guitar Pedals [<span id="pedalCost">500</span>] -- <span id="pedals">0</span></button>
 <button onclick="upgradeCursorSpeed()">Upgrade Cursor Speed [<span id="cursorSpeedCost">300</span>]</button>
+<button onclick="buyPedals()">Buy Guitar Pedals [<span id="pedalCost">500</span>] -- <span id="pedals">0</span></button>
+<button onclick="upgradePedalSpeed()">Upgrade Pedal Speed [<span id="cursorPedalCost">700</span>]</button>
 <script>
     var score = 0;
     var clickingPower = 10;
@@ -20,6 +22,8 @@
     var cursors = 0;
     var pedalCost = 500;
     var pedals = 0;
+    var pedalSpeed = 0;
+    var pedalSpeedCost = 700;
     var interval = 1000; // Initial interval for the automatic score increment
     var intervalId = setInterval(autoIncrementScore, interval); // Store the interval ID for later reference
 
@@ -57,6 +61,22 @@
             cursorSpeed += 100; // Increase cursor speed
             cursorSpeedCost = Math.round(cursorSpeedCost * 1.2); // Increase the cost for the next upgrade
             interval -= cursorSpeed; // Decrease the interval for faster score increment
+
+            // Update the interval timer
+            clearInterval(intervalId);
+            intervalId = setInterval(autoIncrementScore, Math.max(100, interval)); // Ensure interval does not become too small
+
+            document.getElementById("score").innerHTML = score;
+            document.getElementById("cursorSpeedCost").innerHTML = cursorSpeedCost;
+            document.getElementById("cursorSpeedDisplay").innerHTML = cursorSpeed;
+        }
+    }
+    function upgradePedalSpeed() {
+        if(score >= cursorSpeedCost) {
+            score -= pedalSpeedCost;
+            pedalSpeed += 100; // Increase cursor speed
+            pedalSpeedCost = Math.round(pedalSpeedCost * 1.2); // Increase the cost for the next upgrade
+            interval -= pedalSpeed; // Decrease the interval for faster score increment
 
             // Update the interval timer
             clearInterval(intervalId);
