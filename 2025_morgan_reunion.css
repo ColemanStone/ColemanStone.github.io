@@ -6,7 +6,9 @@ nav ul li a {
     padding: 10px 20px;
     margin: 10px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;    
+    font-family: 'Lobster', cursive;
+    font-weight: bold; /* Add this line */
 }
 
 nav ul li a:hover {
@@ -22,5 +24,10 @@ h1 {
 }
 
 body {
-    background-color: #f0f0f0;
+    background-color: #c9c9c9;
+}
+p{
+    font-size: 20px;
+    font-family: 'Lobster', cursive;
+    text-align: center;
 }
