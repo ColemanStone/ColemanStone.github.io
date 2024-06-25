@@ -13,10 +13,20 @@
     <input type="text" id="username" name="username" required><br>
     <label for="password">Password:</label><br>
     <input type="password" id="password" name="password" required><br>
-    <input type="submit" value="Login">
+    <button onclick  ="validateUser(document.getElementById('username').value, document.getElementById('password').value)">Login</button>
 </form>
 <button id="registerButton">Register</button>
 <script>
+    function validateUser(username, password){
+        if(username === 'admin' && password === 'password'){
+            var hiddenFeature = document.getElementById('hiddenFeature');
+            hiddenFeature.style.display = 'block';
+            localStorage.setItem('isAdminLoggedIn', 'true');
+            window.location.href = 'index.html';
+        } else {
+            alert('Invalid credentials');
+        }
+    }
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault();
         var username = document.getElementById('username').value;
@@ -26,13 +36,6 @@
         var adminUsername = 'admin';
         var adminPassword = 'password';
 
-        if (username === adminUsername && password === adminPassword) {
-            // Redirect to the admin page
-            localStorage.setItem('isAdminLoggedIn', 'true');
-            window.location.href = 'index.html';
-        } else {
-            alert('Invalid credentials');
-        }
     });
 
     document.getElementById('registerButton').addEventListener('click', function() {
