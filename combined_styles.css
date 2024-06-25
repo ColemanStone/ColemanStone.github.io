@@ -165,3 +165,6 @@ main section emailMe form{
 .login-form input[type="submit"]:hover {
     background: #0056b3;
 }
+.hiddenFeature {
+    display: none;
+}
