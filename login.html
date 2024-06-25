@@ -47,7 +47,8 @@
         var adminPassword = 'password';
 
         if (username === adminUsername && password === adminPassword){
-            window.location.href = 'admin.html';
+            localStorage.setItem('isAdminLoggedIn', 'true');
+            window.location.href = 'index.html';
         } else {
             alert('Invalid credentials');
         }
