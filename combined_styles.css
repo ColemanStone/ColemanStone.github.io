@@ -167,4 +167,8 @@ main section emailMe form{
 }
 .hiddenFeature {
     display: none;
+    color: #333; /* Matches the color scheme of the rest of the site */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Matches the font family of the login form labels */
+    animation: fadeIn 1s; /* Matches the animation of the login form and email form */
+    margin-top: 20px; /* Matches the margin-top of the login form and email form */
 }
