@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="combined_styles.css">
+    <title>Login Page</title>
+</head>
+<body>
+<form id="loginForm">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br>
+    <input type="submit" value="Login">
+</form>
+<button id="registerButton">Register</button>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        // Replace these values with the actual admin username and password
+        var adminUsername = 'admin';
+        var adminPassword = 'password';
+
+        if (username === adminUsername && password === adminPassword) {
+            // Redirect to the admin page
+            window.location.href = 'admin.html';
+        } else {
+            alert('Invalid credentials');
+        }
+    });
+
+    document.getElementById('registerButton').addEventListener('click', function() {
+        // Redirect to the registration page
+        window.location.href = 'register.html';
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', function(event){
+        event.preventDefault();
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var adminUsername = 'admin';
+        var adminPassword = 'password';
+
+        if (username === adminUsername && password === adminPassword){
+            window.location.href = 'admin.html';
+        } else {
+            alert('Invalid credentials');
+        }
+    })
+</script>
+</body>
+</html>
