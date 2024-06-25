@@ -28,6 +28,7 @@
 
         if (username === adminUsername && password === adminPassword) {
             // Redirect to the admin page
+            localStorage.setItem('isAdminLoggedIn', 'true');
             window.location.href = 'admin.html';
         } else {
             alert('Invalid credentials');
@@ -38,21 +39,6 @@
         // Redirect to the registration page
         window.location.href = 'register.html';
     });
-
-    document.getElementById('loginForm').addEventListener('submit', function(event){
-        event.preventDefault();
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-        var adminUsername = 'admin';
-        var adminPassword = 'password';
-
-        if (username === adminUsername && password === adminPassword){
-            localStorage.setItem('isAdminLoggedIn', 'true');
-            window.location.href = 'index.html';
-        } else {
-            alert('Invalid credentials');
-        }
-    })
 </script>
 </body>
 </html>
