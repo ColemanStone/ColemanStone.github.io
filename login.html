@@ -1,31 +1,52 @@
-<form id="loginForm">
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username" required><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" required><br>
-    <input type="submit" value="Login">
-</form>
-<button id="registerButton">Register</button>
-<script>
-    function validateUser(username, password) {
-        if (username === 'admin' && password === 'password') {
-            var hiddenFeature = document.getElementById('hiddenFeature');
-            hiddenFeature.style.display = 'block';
-            localStorage.setItem('isAdminLoggedIn', 'true');
-            window.location.href = 'index.html';
-        } else {
-            alert('Invalid credentials');
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="combined_styles.css">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <form id="loginForm">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+        <input type="submit" value="Login" onclick="validateUser('username', 'password')">
+        <button onclick="validateUser()">Login</button>
+    </form>
+    <button id="registerButton">Register</button>
+    <script>
+        function validateUser(username, password) {
+            console.log('Validating user', username, password); // Debug log
+            if (username === 'admin' && password === 'password') {
+                var hiddenFeature = document.getElementById('hiddenFeature');
+                if (hiddenFeature) { // Check if hiddenFeature exists
+                    hiddenFeature.style.display = 'block';
+                } else {
+                    console.error('hiddenFeature element not found'); // Error log if not found
+                }
+                localStorage.setItem('isAdminLoggedIn', 'true');
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid credentials');
+            }
         }
-    }
 
-    document.getElementById('loginForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-        validateUser(username, password);
-    });
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            validateUser(username, password);
+        });
 
-    document.getElementById('registerButton').addEventListener('click', function () {
-        window.location.href = 'register.html';
-    });
-</script>
+        document.getElementById('registerButton').addEventListener('click', function () {
+            window.location.href = 'register.html';
+        });
+    </script>
+</body>
+
+</html>
