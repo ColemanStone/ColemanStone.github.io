@@ -1,5 +1,16 @@
 
 <html>
+<style>
+    @keyframes myAnimation {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    .animate {
+        animation: myAnimation 1s;
+    }
+</style>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Clicker Game</title>
@@ -8,14 +19,15 @@
 <body>
 <p>Score: <span id="score">0</span></p>
 <p>Cursor Speed: <span id="cursorSpeedDisplay">0</span></p>
-<img src="acoustic-cartoon-guitar-vector.jpg" alt="Guitar" style="width: 100px; height: 100px;" onclick="addToScore(clickingPower)">
+<img src="Old Rusted Truck.jpg" id="myImage" style="width: 100px; height: 100px;" onclick="addToScore(clickingPower), animateImage()">
+<img id="cursorImage" src="Cursor.jpg" style="position: absolute; display: none; width: 50px; height: 50px;">
 <button onclick="buyCursors()">Buy Cursor [<span id="cursorCost">100</span>] -- <span id="cursors">0</span></button>
 <button onclick="upgradeCursorSpeed()">Upgrade Cursor Speed [<span id="cursorSpeedCost">300</span>]</button>
 <button onclick="buyPedals()">Buy Guitar Pedals [<span id="pedalCost">500</span>] -- <span id="pedals">0</span></button>
 <button onclick="upgradePedalSpeed()">Upgrade Pedal Speed [<span id="pedalSpeedCost">700</span>]</button>
 <script>
     var score = 0;
-    var clickingPower = 10;
+    var clickingPower = 100;
     var cursorCost = 100;
     var cursorSpeed = 0;
     var cursorSpeedCost = 250;
@@ -26,22 +38,69 @@
     var pedalSpeedCost = 700;
     var interval = 1000; // Initial interval for the automatic score increment
     var intervalId = setInterval(autoIncrementScore, interval); // Store the interval ID for later reference
+    var mainImage = document.getElementById('myImage');
+    var cursorImage = document.getElementById('cursorImage');
+    var cursorsBought = 0;
+    var radius = 100;
+    var angle = 0;
+    var speed = 0.008;
 
+
+    function animateImage() {
+        var image = document.getElementById('myImage');
+        image.classList.add('animate');
+
+        // Remove the class after the animation completes
+        setTimeout(function() {
+            image.classList.remove('animate');
+        }, 1000); // The duration of the animation
+    }
     function autoIncrementScore() {
         score += cursors;
         score += pedals * 5;
         document.getElementById("score").innerHTML = score;
     }
 
+    var cursorImages = []; // Add this line at the beginning of your script
+
     function buyCursors() {
         if(score >= cursorCost) {
             score -= cursorCost;
-            cursors += 1;
+            cursorsBought += 1;
+            cursors += cursorsBought;
             cursorCost = Math.round(cursorCost * 1.2);
             document.getElementById("score").innerHTML = score;
             document.getElementById("cursorCost").innerHTML = cursorCost;
             document.getElementById("cursors").innerHTML = cursors;
+
+            // Create a new cursor image for each cursor bought
+            var newCursorImage = document.createElement('img');
+            newCursorImage.src = 'Cursor.jpg';
+            newCursorImage.style.position = 'absolute';
+            newCursorImage.style.display = 'block';
+            newCursorImage.style.width = '50px';
+            newCursorImage.style.height = '50px';
+            newCursorImage.cursorAngle = angle + cursorsBought * (2 * Math.PI / cursors); // Store the angle as a property of the image element
+            document.body.appendChild(newCursorImage);
+            cursorImages.push(newCursorImage); // Add the new cursor image to the array
         }
+    }
+
+    // Start the circling animation for all cursor images
+    setInterval(function() {
+        for (var i = 0; i < cursorImages.length; i++) {
+            updatePosition(cursorImages[i]);
+        }
+    }, 10);
+
+    function updatePosition(cursorImage) {
+        var x = mainImage.offsetLeft + mainImage.offsetWidth / 2 + radius * Math.cos(cursorImage.cursorAngle);
+        var y = mainImage.offsetTop + mainImage.offsetHeight / 2 + radius * Math.sin(cursorImage.cursorAngle);
+
+        cursorImage.style.left = x + 'px';
+        cursorImage.style.top = y + 'px';
+
+        cursorImage.cursorAngle += speed;
     }
 
     function buyPedals() {
