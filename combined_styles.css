@@ -80,16 +80,18 @@ a:hover {
 }
 
 button {
-    display: inline-block;
-    background: #0779e4;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+    margin: 0 1px;
+    padding: 10px 15px;
+    background-color: #007bff; /* For contrast */
+    color: white; /* White text on buttons */
+    border-radius: 4px;
+    z-index: 1;
+    position: relative;
 }
 
 button:hover {
-    background: #0056b3;
+    background-color: #0056b3;
+    text-decoration: underline;
 }
 
 @media (max-width: 600px) {
@@ -174,10 +176,12 @@ main section emailMe form{
 }
 
 submit{
-    background: #0779e4;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
+    margin: 0 10px;
+    padding: 10px 15px;
+    background-color: #007bff; /* For contrast */
+    color: white; /* White text on buttons */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    z-index: 1;
+    position: relative
 }
