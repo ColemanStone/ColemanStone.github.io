@@ -1,4 +1,5 @@
 const express = require('express');
+const mysql = require('mysql');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const app = express();
@@ -37,6 +38,18 @@ app.post('/send-email', (req, res) => {
             res.send({ status: 'success', message: 'Email sent successfully' });
         }
     });
+});
+
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Bear108Bear*',
+    database: 'users'
+});
+
+db.connect((err) => {
+    if (err) throw err;
+    consol.log("Connected to database");
 });
 
 app.get('/test-connection', (req, res) => {
