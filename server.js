@@ -49,7 +49,7 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if (err) throw err;
-    consol.log("Connected to database");
+    console.log("Connected to database");
 });
 
 app.get('/test-connection', (req, res) => {
@@ -61,7 +61,6 @@ app.get('/test-connection', (req, res) => {
         }
     });
 });
-
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`);
 });
