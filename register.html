@@ -8,6 +8,22 @@
     <title>Register</title>
 </head>
 <body>
+<!-- Add a button to trigger the connection test -->
+<button id="testConnectionButton">Test Database Connection</button>
+<script>
+    document.getElementById('testConnectionButton').addEventListener('click', function() {
+        fetch('/test-connection')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Database connection successful');
+                } else {
+                    alert('Database connection failed');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
 <form id="registerForm">
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username" required><br>
@@ -41,21 +57,5 @@
     });
 </script>
 
-<!-- Add a button to trigger the connection test -->
-<button id="testConnectionButton">Test Database Connection</button>
-<script>
-    document.getElementById('testConnectionButton').addEventListener('click', function() {
-        fetch('/test-connection')
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Database connection successful');
-                } else {
-                    alert('Database connection failed');
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    });
-</script>
 </body>
 </html>
