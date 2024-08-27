@@ -1,4 +1,6 @@
-CREATE TABLE{
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users{
     user_id INT PRIMARY KEY,
     user_name VARCHAR(50),
     user_pass VARCHAR(256),
