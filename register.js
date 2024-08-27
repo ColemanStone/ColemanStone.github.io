@@ -30,6 +30,18 @@ app.post('/register', (req, res) => {
     });
 });
 
+
+fetch('/test-connection')
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Database connection successful');
+        } else {
+            console.log('Database connection failed');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+
 app.listen(3000, () => {
     console.log('Server running on port 3000');
 });

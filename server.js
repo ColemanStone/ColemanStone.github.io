@@ -39,6 +39,16 @@ app.post('/send-email', (req, res) => {
     });
 });
 
+app.get('/test-connection', (req, res) => {
+    db.query('SELECT 1', (err, results) => {
+        if (err) {
+            res.json({ success: false, message: 'Database connection failed' });
+        } else {
+            res.json({ success: true, message: 'Database connection successful' });
+        }
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`);
 });
