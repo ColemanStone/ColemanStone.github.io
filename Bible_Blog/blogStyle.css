@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
-    padding: 0;
+    padding: 0 0 60px 0; /* Add bottom padding to make space for the footer */
     background-color: #f4f4f4;
     color: #333;
 }
@@ -67,9 +67,10 @@ footer {
     padding: 10px 0;
     background: #333;
     color: #fff;
-    position: fixed;
+    position: fixed; /* Keep the footer at the bottom */
     width: 100%;
     bottom: 0;
+    height: 60px; /* Adjust this value based on the actual height of your footer */
 }
 
 footer button {

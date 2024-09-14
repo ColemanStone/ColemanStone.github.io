@@ -1,3 +1,6 @@
+/* combined_styles.css */
+
+/* Base styles for all devices */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
@@ -183,4 +186,83 @@ submit{
     transition: background-color 0.3s ease;
     z-index: 1;
     position: relative
+}
+
+/* Responsive Design */
+
+/* Base styles for all devices */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, nav, main, footer {
+    padding: 20px;
+}
+
+/* Styles for tablets and larger devices */
+@media (min-width: 600px) {
+    nav {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    section {
+        flex: 1;
+        margin: 10px;
+    }
+}
+
+/* Styles for phones */
+@media (max-width: 599px) {
+    nav {
+        display: block;
+    }
+
+    main {
+        display: block;
+    }
+
+    section {
+        margin: 10px 0;
+    }
+}
+
+/* Make images responsive */
+img, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Flexbox example */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav a {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+/* Grid example */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 600px) {
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
 }
