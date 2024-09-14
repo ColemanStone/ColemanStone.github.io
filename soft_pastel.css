@@ -1,0 +1,44 @@
+
+/* Soft Pastel Theme */
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #fdf0e3;
+    color: #5d5d5d;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f9d5a7;
+    color: #5d5d5d;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #f7a399;
+}
+
+nav a {
+    padding: 12px;
+    color: #5d5d5d;
+    background-color: #f7a399;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: #f9d5a7;
+}
+
+button {
+    background-color: #f7a399;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f48a68;
+}
