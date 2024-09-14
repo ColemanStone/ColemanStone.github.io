@@ -16,7 +16,7 @@ header {
     color: #fff;
     padding-top: 30px;
     min-height: 70px;
-    border-bottom: #0779e4 3px solid;
+    border-bottom: #ff7f00 3px solid;
     z-index: 2;
     position: relative;
 }
@@ -53,7 +53,7 @@ ul li {
     background: #fff;
     margin-bottom: 10px;
     padding: 10px;
-    border-left: #0779e4 4px solid;
+    border-left: #ff7f00 4px solid;
 }
 
 ul li:hover {
@@ -154,7 +154,7 @@ main section emailMe form{
     padding: 10px;
     margin-bottom: 10px;
     border: none;
-    border-bottom: 2px solid #0779e4;
+    border-bottom: 2px solid #ff7f00;
 }
 
 .login-form input[type="submit"] {
