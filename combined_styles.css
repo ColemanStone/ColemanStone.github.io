@@ -1,4 +1,3 @@
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
@@ -71,7 +70,7 @@ footer {
 }
 
 a {
-    color: #0779e4;
+    color: #ff7f00;
     text-decoration: none;
 }
 
@@ -82,7 +81,7 @@ a:hover {
 button {
     margin: 0 1px;
     padding: 10px 15px;
-    background-color: #007bff; /* For contrast */
+    background-color: #ff7f00; /* For contrast */
     color: white; /* White text on buttons */
     border-radius: 4px;
     z-index: 1;
@@ -90,7 +89,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #cc6600;
     text-decoration: underline;
 }
 
@@ -109,7 +108,7 @@ nav {
 .nav-link {
     margin: 0 10px;
     padding: 10px 15px;
-    background-color: #007bff; /* For contrast */
+    background-color: #ff7f00; /* For contrast */
     color: white; /* White text on buttons */
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -117,9 +116,9 @@ nav {
     position: relative
 }
 .nav-link:hover {
-        background-color: #0056b3;
-        margin-top: 20px;
-    }
+    background-color: #cc6600;
+    margin-top: 20px;
+}
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -156,7 +155,7 @@ main section emailMe form{
 }
 
 .login-form input[type="submit"] {
-    background: #0779e4;
+    background: #ff7f00;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -165,7 +164,7 @@ main section emailMe form{
 }
 
 .login-form input[type="submit"]:hover {
-    background: #0056b3;
+    background: #cc6600;
 }
 .hiddenFeature {
     display: none;
@@ -178,7 +177,7 @@ main section emailMe form{
 submit{
     margin: 0 10px;
     padding: 10px 15px;
-    background-color: #007bff; /* For contrast */
+    background-color: #ff7f00; /* For contrast */
     color: white; /* White text on buttons */
     border-radius: 4px;
     transition: background-color 0.3s ease;
