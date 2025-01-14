@@ -15,7 +15,7 @@ header {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
     text-align: center;
-    border-bottom: 2px solid #ff7f00;
+    border-bottom: 2px solid #6960a9;
 }
 
 nav ul {
@@ -46,7 +46,8 @@ main {
     margin: 20px;
 }
 
-h1, h2 {
+h1,
+h2 {
     color: #ffcc00;
 }
 
@@ -77,7 +78,7 @@ footer {
 }
 
 button {
-    background-color: #ff7f00;
+    background-color: #6960a9;
     border: none;
     color: white;
     padding: 10px;
@@ -86,23 +87,19 @@ button {
 }
 
 button:hover {
-    background-color: #cc6600;
+    background-color: #6960a9;
 }
 
-/* Subtle animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-main, header, footer {
+main,
+header,
+footer {
     animation: fadeIn 2s ease-in-out;
 }
 
 nav a {
     padding: 12px;
     color: white;
-    background-color: #4e73df;
+    background-color: #6960a9;
     border-radius: 4px;
     text-decoration: none;
     margin: 0 5px;
@@ -111,4 +108,15 @@ nav a {
 
 nav a:hover {
     background-color: #375a9e;
+}
+
+/* Subtle animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

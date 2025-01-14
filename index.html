@@ -8,13 +8,6 @@
     <title>Coleman Stone's Project Website</title>
     <a href="login.html" class="nav-link">Login</a>
     <button id="logoutButton">Logout</button>
-    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
-    <script type="text/javascript">
-        (function () {
-            emailjs.init("3iUytdM_HdHpqRSCh");
-        })();
-    </script>
-
 </head>
 
 <body>
@@ -25,7 +18,6 @@
     <nav>
         <a href="my_information.html" class="nav-link">Resume</a>
         <a href="https://www.youtube.com/@stonecoleman108" class="nav-link" target="_blank">Youtube</a>
-        <a href="https://twitch.tv/ClearerBear" class="nav-link">Twitch</a>
         <a href="Bible_Blog/blog.html" class="nav-link">Faith Journal</a>
         <a href="project_home_page.html" class="nav-link">Projects</a>
         <a href="Clicker_Game/ClickerGame.html" class="nav-link">Clicker Game</a>
@@ -49,30 +41,6 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-        <section id="emailMe" class="contact">
-            <h2>Send me an email</h2>
-            <form id="contactForm" onsubmit="sendEmail(); return false;">
-                <label for="user_email">Your Email:</label><br>
-                <input type="email" id="user_email" name="user_email" required><br>
-                <label for="subject">Subject:</label><br>
-                <input type="text" id="subject" name="subject" required><br>
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" required></textarea><br>
-                <input type="submit" value="Send">
-            </form>
-
-            <script type="text/javascript">
-                function sendEmail() {
-                    emailjs.sendForm('service_ryk5m6i', 'template_h8xvvt8', '#contactForm')
-                        .then(function (response) {
-                            console.log('SUCCESS!', response.status, response.text);
-                            alert("Email sent successfully!");
-                        }, function (error) {
-                            console.log('FAILED...', error);
-                            alert("Failed to send email.");
-                        });
-                }
-            </script>
         </section>
     </main>
 </body>
