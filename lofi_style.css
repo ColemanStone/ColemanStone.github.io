@@ -110,6 +110,20 @@ nav a:hover {
     background-color: #375a9e;
 }
 
+@media (max-width: 600px) {
+    main {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
+
 /* Subtle animations */
 @keyframes fadeIn {
     from {
