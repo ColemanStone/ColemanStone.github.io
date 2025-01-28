@@ -52,7 +52,7 @@ main {
 
 h1,
 h2 {
-    color: #ffcc00;
+    color: #e99c03;
 }
 
 p {
@@ -82,7 +82,7 @@ footer {
 }
 
 button {
-    background-color: #6960a9;
+    background-color: #e99c03;
     border: none;
     color: white;
     padding: 10px;
@@ -91,7 +91,7 @@ button {
 }
 
 button:hover {
-    background-color: #6960a9;
+    background-color: #e99c03;
 }
 
 main,
@@ -111,7 +111,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #375a9e;
+    background-color: #c28101;
 }
 
 @media (max-width: 600px) {
@@ -131,7 +131,7 @@ nav a:hover {
         padding: 10px 15px;
         font-size: 14px;
         color: #fff;
-        background-color: #ffcc00;
+        background-color: #e99c03;
         text-decoration: none;
         border-radius: 5px;
     }
