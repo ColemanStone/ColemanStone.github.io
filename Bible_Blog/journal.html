@@ -109,7 +109,16 @@
             to himself as the tax collector.</p>
         <div id="admin-editor" style="display: none;">
             <h2>Add New Entry</h2>
-            <textarea id="new-entry" rows="10" cols="50"></textarea><br>
+            <div id="editor-toolbar">
+                <button onclick="execCmd('bold')"><b>B</b></button>
+                <button onclick="execCmd('italic')"><i>I</i></button>
+                <button onclick="execCmd('underline')"><u>U</u></button>
+                <button onclick="execCmd('insertOrderedList')">OL</button>
+                <button onclick="execCmd('insertUnorderedList')">UL</button>
+                <button onclick="execCmd('formatBlock', '<h1>')">H1</button>
+                <button onclick="execCmd('formatBlock', '<h2>')">H2</button>
+            </div>
+            <div id="editor" contenteditable="true" style="border: 1px solid #ccc; padding: 10px; height: 200px;"></div>
             <button onclick="addEntry()">Add Entry</button>
         </div>
     </main>
@@ -122,13 +131,17 @@
             }
         }
 
+        function execCmd(command, value = null) {
+            document.execCommand(command, false, value);
+        }
+
         function addEntry() {
-            const newEntry = document.getElementById('new-entry').value;
+            const newEntry = document.getElementById('editor').innerHTML;
             const main = document.querySelector('main');
             const newEntryElement = document.createElement('div');
-            newEntryElement.innerHTML = `<h2>New Entry</h2><p>${newEntry}</p>`;
+            newEntryElement.innerHTML = newEntry;
             main.appendChild(newEntryElement);
-            document.getElementById('new-entry').value = '';
+            document.getElementById('editor').innerHTML = '';
         }
 
         window.onload = checkAdmin;
