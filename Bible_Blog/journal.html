@@ -107,53 +107,7 @@
             mindset and see myself as the one before I truely meet Jesus. I slip out of that fast but when I read
             Matthew 10:2-3 for the first time I really felt like what I though Matthew felt like whenever he would refer
             to himself as the tax collector.</p>
-        <div id="admin-editor" style="display: none;">
-            <h2>Add New Entry</h2>
-            <div id="editor-toolbar">
-                <button onclick="execCmd('bold')"><b>B</b></button>
-                <button onclick="execCmd('italic')"><i>I</i></button>
-                <button onclick="execCmd('underline')"><u>U</u></button>
-                <button onclick="execCmd('insertOrderedList')">OL</button>
-                <button onclick="execCmd('insertUnorderedList')">UL</button>
-                <button onclick="execCmd('formatBlock', '<h1>')">H1</button>
-                <button onclick="execCmd('formatBlock', '<h2>')">H2</button>
-            </div>
-            <div id="editor" contenteditable="true" style="border: 1px solid #ccc; padding: 10px; height: 200px;"></div>
-            <button onclick="addEntry()">Add Entry</button>
-        </div>
     </main>
-    <script>
-        function checkAdmin() {
-            // Simulate admin check
-            const isAdmin = localStorage.getItem('isAdmin');
-            if (isAdmin) {
-                document.getElementById('admin-editor').style.display = 'block';
-            }
-        }
-
-        function execCmd(command, value = null) {
-            document.execCommand(command, false, value);
-        }
-
-        function addEntry() {
-            const newEntry = document.getElementById('editor').innerHTML;
-            fetch('/add-entry', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ newEntry: `<div>${newEntry}</div>` })
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert(data);
-                location.reload();
-            })
-            .catch(error => console.error('Error:', error));
-        }
-
-        window.onload = checkAdmin;
-    </script>
 </body>
 
 </html>
