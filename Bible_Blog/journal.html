@@ -107,7 +107,32 @@
             mindset and see myself as the one before I truely meet Jesus. I slip out of that fast but when I read
             Matthew 10:2-3 for the first time I really felt like what I though Matthew felt like whenever he would refer
             to himself as the tax collector.</p>
+        <div id="admin-editor" style="display: none;">
+            <h2>Add New Entry</h2>
+            <textarea id="new-entry" rows="10" cols="50"></textarea><br>
+            <button onclick="addEntry()">Add Entry</button>
+        </div>
     </main>
+    <script>
+        function checkAdmin() {
+            // Simulate admin check
+            const isAdmin = localStorage.getItem('isAdmin');
+            if (isAdmin) {
+                document.getElementById('admin-editor').style.display = 'block';
+            }
+        }
+
+        function addEntry() {
+            const newEntry = document.getElementById('new-entry').value;
+            const main = document.querySelector('main');
+            const newEntryElement = document.createElement('div');
+            newEntryElement.innerHTML = `<h2>New Entry</h2><p>${newEntry}</p>`;
+            main.appendChild(newEntryElement);
+            document.getElementById('new-entry').value = '';
+        }
+
+        window.onload = checkAdmin;
+    </script>
 </body>
 
 </html>

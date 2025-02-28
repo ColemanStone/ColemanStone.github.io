@@ -16,12 +16,21 @@
 </header>
 <main>
     <h1>Welcome to Coleman's Faith Journal</h1>
-    <p>I will be posting a digitized version of my journal whenever I write more in it. In the meantime, you should read my testimony.</p>
+    <p>Hello! Thank you for cheking this out. Here I post my faith journal entries. The journal entries are about my thoughts about my faith and my struggles I have experienced.</p>
 
 </main>
 <footer>
     <button onclick="window.location.href='../index.html'">Go Back</button>
+    <button onclick="adminLogin()">Admin Login</button>
     <p>&copy; 2023 Coleman's Blog. All rights reserved.</p>
 </footer>
+<script>
+    function adminLogin() {
+        // Simulate admin login
+        localStorage.setItem('isAdmin', true);
+        alert('Admin logged in');
+        window.location.href = 'blog.html';
+    }
+</script>
 </body>
 </html>
