@@ -137,11 +137,19 @@
 
         function addEntry() {
             const newEntry = document.getElementById('editor').innerHTML;
-            const main = document.querySelector('main');
-            const newEntryElement = document.createElement('div');
-            newEntryElement.innerHTML = newEntry;
-            main.appendChild(newEntryElement);
-            document.getElementById('editor').innerHTML = '';
+            fetch('/add-entry', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ newEntry: `<div>${newEntry}</div>` })
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                location.reload();
+            })
+            .catch(error => console.error('Error:', error));
         }
 
         window.onload = checkAdmin;

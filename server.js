@@ -2,11 +2,14 @@ const express = require('express');
 const mysql = require('mysql');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+const fs = require('fs');
+const path = require('path');
 const app = express();
 const port = 3000;
 
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'Bible_Blog')));
 
 app.use(bodyParser.json());
 
@@ -37,6 +40,27 @@ app.post('/send-email', (req, res) => {
             console.log(info);
             res.send({ status: 'success', message: 'Email sent successfully' });
         }
+    });
+});
+
+app.post('/add-entry', (req, res) => {
+    const { newEntry } = req.body;
+    const journalPath = path.join(__dirname, 'Bible_Blog', 'journal.html');
+
+    fs.readFile(journalPath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).send('Error reading journal file');
+        }
+
+        const updatedData = data.replace('</main>', `${newEntry}</main>`);
+
+        fs.writeFile(journalPath, updatedData, 'utf8', (err) => {
+            if (err) {
+                return res.status(500).send('Error writing to journal file');
+            }
+
+            res.send('Entry added successfully');
+        });
     });
 });
 
