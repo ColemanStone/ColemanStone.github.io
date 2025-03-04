@@ -147,7 +147,7 @@ nav a:hover {
     p {
         font-size: 1em;
     }
-}
+} /* Moved the closing bracket here */
 
 .responsive-iframe {
     width: 100%;
@@ -155,7 +155,6 @@ nav a:hover {
     aspect-ratio: 16/9;
     border: none;
 }
-
 
 /* Subtle animations */
 @keyframes fadeIn {
