@@ -115,6 +115,22 @@ nav a:hover {
 }
 
 @media (max-width: 600px) {
+        nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
     main {
         padding: 10px;
     }
