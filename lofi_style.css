@@ -115,7 +115,17 @@ nav a:hover {
 }
 
 @media (max-width: 600px) {
-        nav ul {
+    nav {
+        position: relative;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    nav ul {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -126,11 +136,17 @@ nav a:hover {
         margin: 10px 0;
     }
 
-    nav ul li a {
-        display: block;
-        width: 100%;
-        text-align: center;
+    nav a {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 10px 15px;
+        font-size: 14px;
+        color: #fff;
+        background-color: #e99c03;
+        text-decoration: none;
+        border-radius: 5px;
     }
+
     main {
         padding: 10px;
     }
