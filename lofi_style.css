@@ -168,7 +168,7 @@ nav a:hover {
 }
 
 
-a {
+a, a:visited, a:link{
     color:white;
     text-decoration: none;
 }
