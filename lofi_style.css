@@ -169,12 +169,12 @@ nav a:hover {
 
 
 a, a:visited, a:link{
-    color:white;
-    text-decoration: none;
+    color:white !important;
+    text-decoration: none !important;
 }
 
 a:hover{
-    color: lightgrey;
+    color: lightgrey !important;
 }
 
 /* Subtle animations */
