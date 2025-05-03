@@ -167,6 +167,16 @@ nav a:hover {
     border: none;
 }
 
+
+a {
+    color:white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: lightgrey;
+}
+
 /* Subtle animations */
 @keyframes fadeIn {
     from {
