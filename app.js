@@ -14,7 +14,8 @@ app.get('/admin', (req, res) => res.render('admin'));
 app.get('/login', (req, res) => res.render('login'));
 app.get('/register', (req, res) => res.render('register'));
 app.get('/project-home', (req, res) => res.render('project_home_page'));
-app.get('/my-info', (req, res) => res.render('my_information'));
+app.get('/my_information', (req, res) => res.render('my_information'));
+app.get('/journal', (req, res)=> res.render('journal'))
 
 // Start server
 app.listen(port, () => {
