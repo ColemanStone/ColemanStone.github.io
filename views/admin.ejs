@@ -6,11 +6,22 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Admin Dashboard</title>
 </head>
 
 <body>
+    <nav>
+        <a href="/">Home</a>
+        <button id="logoutButton">Logout</button>
+    </nav>
     <h1>Admin Login Worked</h1>
+
+    <script>
+        document.getElementById('logoutButton').addEventListener('click', function () {
+            localStorage.removeItem('isAdminLoggedIn');
+            window.location.href = '/';
+        });
+    </script>
 </body>
 
 </html>

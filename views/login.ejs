@@ -29,7 +29,7 @@
                     console.error('hiddenFeature element not found'); // Error log if not found
                 }
                 localStorage.setItem('isAdminLoggedIn', 'true');
-                window.location.href = 'index.html';
+                window.location.href = '/';
             } else {
                 alert('Invalid credentials');
             }
@@ -43,7 +43,7 @@
         });
 
         document.getElementById('registerButton').addEventListener('click', function () {
-            window.location.href = 'register.ejs';
+            window.location.href = '/register';
         });
     </script>
 </body>

@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/lofi_style.css">
     <title>Register</title>
 </head>
+
 <body>
-<!-- Add a button to trigger the connection test -->
-<button id="testConnectionButton">Test Database Connection</button>
-<script>
-    document.getElementById('testConnectionButton').addEventListener('click', function() {
-        fetch('/test-connection')
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Database connection successful');
-                } else {
-                    alert('Database connection failed');
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    });
-</script>
-<form id="registerForm">
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username" required><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" required><br>
-    <input type="submit" value="Register">
-</form>
-<script src="server.js"></script>
+    <!-- Add a button to trigger the connection test -->
+    <button id="testConnectionButton">Test Database Connection</button>
+    <script>
+        document.getElementById('testConnectionButton').addEventListener('click', function () {
+            fetch('/test-connection')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Database connection successful');
+                    } else {
+                        alert('Database connection failed');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+    <form id="registerForm">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+        <input type="submit" value="Register">
+    </form>
+    <button onclick="window.location.href='/'">Go Back</button>
 </body>
+
 </html>
