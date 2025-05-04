@@ -17,7 +17,7 @@ app.get('/project-home', (req, res) => res.render('project_home_page'));
 app.get('/my_information', (req, res) => res.render('my_information'));
 app.get('/journal', (req, res)=> res.render('journal'))
 app.get('/blog', (req, res)=> res.render('blog'))
-
+app.get('/myTestimony', (req, res)=> res.render('myTestimony'))
 // Start server
 app.listen(port, () => {
     console.log(`Site running at http://localhost:${port}`);
