@@ -16,6 +16,7 @@ app.get('/register', (req, res) => res.render('register'));
 app.get('/project-home', (req, res) => res.render('project_home_page'));
 app.get('/my_information', (req, res) => res.render('my_information'));
 app.get('/journal', (req, res)=> res.render('journal'))
+app.get('/blog', (req, res)=> res.render('blog'))
 
 // Start server
 app.listen(port, () => {
