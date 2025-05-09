@@ -1,5 +1,5 @@
 // database.js
-const Database = require('better-sqlite3');
+const Database = require('sqlite3');
 const db = new Database('data/site.db'); // Creates or opens the DB file
 
 // Create the users table if it doesn't exist
