@@ -1,7 +1,8 @@
+// database.js
 const Database = require('better-sqlite3');
-const db = new Database('data/site.db'); // stores your data in /data
+const db = new Database('data/site.db'); // Creates or opens the DB file
 
-// Create users table if it doesn't exist
+// Create the users table if it doesn't exist
 db.prepare(`
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
