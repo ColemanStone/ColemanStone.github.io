@@ -10,42 +10,17 @@
 </head>
 
 <body>
-    <form id="loginForm">
+    <form action="/login" method="POST">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" required><br>
+
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password" required><br>
+
         <input type="submit" value="Login">
     </form>
-    <button id="registerButton">Register</button>
-    <script>
-        function validateUser(username, password) {
-            console.log('Validating user', username, password); // Debug log
-            if (username === 'admin' && password === 'password') {
-                var hiddenFeature = document.getElementById('hiddenFeature');
-                if (hiddenFeature) { // Check if hiddenFeature exists
-                    hiddenFeature.style.display = 'block';
-                } else {
-                    console.error('hiddenFeature element not found'); // Error log if not found
-                }
-                localStorage.setItem('isAdminLoggedIn', 'true');
-                window.location.href = '/';
-            } else {
-                alert('Invalid credentials');
-            }
-        }
 
-        document.getElementById('loginForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            validateUser(username, password);
-        });
-
-        document.getElementById('registerButton').addEventListener('click', function () {
-            window.location.href = '/register';
-        });
-    </script>
+    <a href="/register">Register</a>
 </body>
 
 </html>

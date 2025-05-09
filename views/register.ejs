@@ -11,27 +11,13 @@
 </head>
 
 <body>
-    <!-- Add a button to trigger the connection test -->
-    <button id="testConnectionButton">Test Database Connection</button>
-    <script>
-        document.getElementById('testConnectionButton').addEventListener('click', function () {
-            fetch('/test-connection')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Database connection successful');
-                    } else {
-                        alert('Database connection failed');
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        });
-    </script>
-    <form id="registerForm">
+    <form action="/register" method="POST">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" required><br>
+
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password" required><br>
+
         <input type="submit" value="Register">
     </form>
     <button onclick="window.location.href='/'">Go Back</button>
