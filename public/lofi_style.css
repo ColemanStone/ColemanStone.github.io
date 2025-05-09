@@ -187,3 +187,60 @@ a:hover{
         opacity: 1;
     }
 }
+
+.auth-form {
+    max-width: 400px;
+    margin: 60px auto;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.auth-form h2 {
+    text-align: center;
+    color: #e99c03;
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    color: #f5f5f5;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #6960a9;
+    background-color: #222;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.auth-form button {
+    background-color: #e99c03;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.auth-form button:hover {
+    background-color: #ffae00;
+}
+
+.auth-form p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.auth-form a {
+    color: #ffcc00;
+    text-decoration: underline;
+}
