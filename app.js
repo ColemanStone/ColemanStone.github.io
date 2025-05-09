@@ -5,8 +5,17 @@ const app = express();
 const port = process.env.PORT || 3000;
 const fs = require('fs')
 const bcrypt = require('bcryptjs');
-const db = require('./database');
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./data/site.db');
 
+db.run(`
+  CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    is_admin INTEGER DEFAULT 0
+  )
+`);
 
 // Static files (CSS/JS/Images)
 app.use(express.static('public'));
@@ -42,14 +51,18 @@ app.get('/admin', (req, res) => res.render('admin'));
 app.get('/login', (req, res) => res.render('login'));
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    const user = db.prepare('SELECT * FROM users WHERE username = ?').get(username);
-    if (user && await bcrypt.compare(password, user.password)) {
-        req.session.userId = user.id;
-        req.session.isAdmin = !!user.is_admin;
-        res.redirect('/journal');
-    } else {
-        res.send('Invalid credentials');
-    }
+    db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
+        if (err || !user) {
+            return res.send('Invalid credentials');
+        }
+        if (await bcrypt.compare(password, user.password)) {
+            req.session.userId = user.id;
+            req.session.isAdmin = !!user.is_admin;
+            res.redirect('/journal');
+        } else {
+            res.send('Invalid credentials');
+        }
+    });
 });
 app.get('/logout', (req, res) => {
     req.session.destroy(() => {
@@ -60,12 +73,12 @@ app.get('/register', (req, res) => res.render('register'));
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
     const hashed = await bcrypt.hash(password, 10);
-    try {
-        db.prepare('INSERT INTO users (username, password) VALUES (?, ?)').run(username, hashed);
+    db.run('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashed], function (err) {
+        if (err) {
+            return res.send('Username already exists.');
+        }
         res.redirect('/login');
-    } catch (err) {
-        res.send('Username already exists.');
-    }
+    });
 });
 app.get('/project_home_page', (req, res) => res.render('project_home_page'));
 app.get('/my_information', (req, res) => res.render('my_information'));
