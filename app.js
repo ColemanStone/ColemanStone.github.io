@@ -48,7 +48,7 @@ app.set('view engine', 'ejs');
 // Routes
 app.get('/faction_sim', (req, res) => {
     res.render('faction_sim');
-});=
+});
 app.get('/', (req, res) => res.render('index'));
 app.get('/admin', (req, res) => res.render('admin'));
 app.get('/login', (req, res) => res.render('login'));
