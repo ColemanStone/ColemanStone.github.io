@@ -26,6 +26,10 @@ app.get('/blog', (req, res) =>{
     res.render('blog')
 })
 
+app.get('/music', (req, res) =>{
+    res.render('music')
+})
+
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
     const passwordHash = await bcrypt.hash(password, 10);
