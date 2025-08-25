@@ -1,97 +1,79 @@
+const fetch = require('node-fetch');
+const mongoose = require('mongoose');
+const session = require('express-session')
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const bcrypt = require('bcrypt')
+const User = require('./models/User')
 const express = require('express');
-const session = require('express-session');
-const path = require('path');
 const app = express();
-const port = process.env.PORT || 3000;
-const fs = require('fs')
-const bcrypt = require('bcryptjs');
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./data/site.db');
-
-db.run(`
-  CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL,
-    is_admin INTEGER DEFAULT 0
-  )
-`);
-
-// Static files (CSS/JS/Images)
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json())
-
-app.use(session({
-    secret: 'yourSecretKeyHere', // Replace with a secure secret in production
-    resave: false,
-    saveUninitialized: false
-}));
-
-let journalEntries = [];
-
-app.post('/journal/new', (req, res) => {
-    if (!req.session.isAdmin) {
-        return res.status(403).send('Forbidden');
-    }
-    const { title, content } = req.body;
-    journalEntries.push({ title, content });
-
-    fs.writeFileSync('data/journal.json', JSON.stringify(journalEntries, null, 2));
-
-    res.redirect('/journal');
-});
-
-// View engine
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
-// Routes
-app.get('/faction_sim', (req, res) => {
-    res.render('faction_sim');
+app.get('/', (req, res) => {
+    res.render('index');
 });
-app.get('/', (req, res) => res.render('index'));
-app.get('/admin', (req, res) => res.render('admin'));
-app.get('/login', (req, res) => res.render('login'));
-app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
-    db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
-        if (err || !user) {
-            return res.send('Invalid credentials');
-        }
-        if (await bcrypt.compare(password, user.password)) {
-            req.session.userId = user.id;
-            req.session.isAdmin = !!user.is_admin;
-            res.redirect('/journal');
-        } else {
-            res.send('Invalid credentials');
-        }
-    });
+
+app.get('/register', (req, res) =>{
+    res.render('register')
+})
+
+app.get('/login', (req, res) => {
+    res.render('login');
 });
-app.get('/logout', (req, res) => {
-    req.session.destroy(() => {
-        res.redirect('/journal');
-    });
-});
-app.get('/register', (req, res) => res.render('register'));
+
+app.get('/blog', (req, res) =>{
+    res.render('blog')
+})
+
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
-    const hashed = await bcrypt.hash(password, 10);
-    db.run('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashed], function (err) {
-        if (err) {
-            return res.send('Username already exists.');
-        }
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    try {
+        await User.create({ username, passwordHash });
         res.redirect('/login');
-    });
+    } catch {
+        res.send('Error registering user.');
+    }
 });
-app.get('/project_home_page', (req, res) => res.render('project_home_page'));
-app.get('/my_information', (req, res) => res.render('my_information'));
-app.get('/journal', (req, res) => {
-    const entries = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'journal.json')));
-    res.render('journal', { journalEntries: entries, isAdmin: req.session.isAdmin, user: req.session.userId });
-});
-app.get('/blog', (req, res) => res.render('blog'))
-app.get('/myTestimony', (req, res) => res.render('myTestimony'))
-// Start server
-app.listen(port, () => {
-    console.log(`Site running at http://localhost:${port}`);
-});
+
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+}));
+
+mongoose.connect('mongodb+srv://stonecoleman4563:3KhN5HqivM61tIP3@colemanstoneinfo.dk5dcgg.mongodb.net/?retryWrites=true&w=majority&appName=Colemanstoneinfo', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => console.log('Connected to MonoDB'))
+    .catch(err => console.error('MonogoDB connection error:', err));
+
+app.use(session({
+    secret: 'afb985a2cc7f86d97ac698eab4aadc777e1a7e95833867a0c6d55a2f34a1d82640295114493098fd8010e24d27a0c2ea0d98754d694fb69171467d5db5fc9d4a',
+    resave: false,
+    saveUninitialized: false
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(async (username, password, done) => {
+    const user = await User.findOne({username});
+    if (!user) return done(null, false, {message: 'User Not Found'});
+
+    const match = await bcrypt.compare(password, user.passwordHash);
+    if (!match) return done(null, false, {message: 'Incorrect Password'});
+
+    return done(null, user);
+}));
+
+passport.deserializeUser(async (id, done) => {
+    const user = await User.findById(id);
+    done(null, user);
+})
+
+app.use(express.urlencoded({extended: false}))
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

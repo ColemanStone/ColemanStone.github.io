@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/lofi_style.css">
-    <title>Register</title>
-</head>
-
-<body>
-    <form action="/register" method="POST">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br>
-
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br>
-
-        <input type="submit" value="Register">
-    </form>
-    <button onclick="window.location.href='/'">Go Back</button>
-</body>
-
-</html>
+<link rel="stylesheet" href="/style.css">
+<%- include('partials/header') %>
+<h2>Register</h2>
+<form action="/register" method="POST">
+    <input name="username" placeholder="Username" required>
+    <input name="password" type="password" placeholder="Password" required>
+    <button type="submit">Register</button>
+</form>

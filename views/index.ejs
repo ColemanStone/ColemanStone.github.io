@@ -1,68 +1,47 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="/lofi_style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coleman Stone's Project Website</title>
+    <link rel="stylesheet" href="/style.css">
+    <title>Coleman Website</title>
 </head>
+<%- include('partials/header') %>
 
-<body>
-    <header>
-        <h1>Welcome to Coleman Stone's Portfolio</h1>
-        <p>I'm a Front-End Programmer / Full-Stack Developer and Musician. Explore my work and projects.</p>
-        <nav>
-            <a href="/login" class="nav-link">Login</a>
-            <button id="logoutButton">Logout</button>
-        </nav>
-    </header>
-    <nav>
-        <a href="/my_information" class="nav-link">Resume</a>
-        <a href="https://www.youtube.com/@stonecoleman108" class="nav-link" target="_blank">Youtube</a>
-        <a href="/blog" class="nav-link">Faith Journal</a>
-        <a href="/project_home_page" class="nav-link">Projects</a>
-    </nav>
-    <main>
-        <div id="hiddenFeature" style="display: none;">
-            <!-- Add your hidden features here -->
-            <h2>Hidden Feature</h2>
-            <p>This feature is only visible to admins.</p>
-        </div>
-        <section id="about-me">
+    <body>
+
+        <section class="hero container">
+            <h1>Hello, I’m Coleman Stone</h1>
+            <p>Music Instructor | Developer | IT Professional</p>
+            <a href="#about" class="button">Learn More</a>
+        </section>
+
+        <section id="about" class="card">
             <h2>About Me</h2>
-            <p>Currently a student at Indiana University Kokomo, I am passionate about web development, music
-                production, and technology. This website showcases my professional journey, skills, and projects.</p>
+            <p>I teach people of all ages to play the piano, guitar, and drums. Along with that I also work as a IT
+                Proffesional
+                helping people with whatever computer problems that show up. While I am doing all of that work I also
+                volunteer at
+                my local church by playing in the worship band along with being the tech lead and leader for the student
+                ministry basically
+                every Sunday night.
+            </p>
         </section>
 
-        <h2>My Music</h2>
-        <iframe class="responsive-iframe"
-            src="https://www.youtube-nocookie.com/embed/videoseries?si=ztVCv2qnRXYh3lY0&amp;list=PLRujzlDeMOhuygB0pCd7ZTCOjKPAMu2ip"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <section class="quote-block container">
+            <p>“Dear friend, do not imitate what is evil but what is good. Anyone who does what is good is from God.
+                Anyone who does what is evil has not seen God.” 3 John 1:11 NIV</p>
         </section>
-    </main>
-</body>
 
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function () {
-        var isAdminLoggedIn = localStorage.getItem('isAdminLoggedIn');
-        if (isAdminLoggedIn === 'true') {
-            var hiddenFeature = document.getElementById('hiddenFeature');
-            if (hiddenFeature) {
-                hiddenFeature.style.display = 'block'; // Make the feature visible
-            }
-        }
-    });
+        <section class="cta container">
+            <h2>Let’s Connect</h2>
+            <p>Want to contact me. Email would be the best way!</p>
+            <a href="colemanstone108@gmail.com" class="button">Email Me</a>
+        </section>
 
-    document.getElementById('logoutButton').addEventListener('click', function () {
-        // Clear the login status
-        localStorage.removeItem('isAdminLoggedIn');
-
-        // Optionally, redirect to the homepage or login page
-        window.location.href = '/'; // Adjust the URL as needed
-    });
-</script>
+        <footer>
+            <p>© 2025 Coleman Stone. Built by me.</p>
+        </footer>
+    </body>
 
 </html>

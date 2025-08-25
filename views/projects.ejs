@@ -1,0 +1,10 @@
+<%- include('partials/header') %>
+<h2>Projects</h2>
+<ul>
+    <% repos.forEach(repo => { %>
+        <li>
+            <a href="<%= repo.html_url %>" target="_blank"><%= repo.name %></a>
+            <p><%= repo.description %></p>
+        </li>
+    <% }) %>
+</ul>
