@@ -1,14 +1,21 @@
-const fetch = require('node-fetch');
-const mongoose = require('mongoose');
-const session = require('express-session')
-const passport = require('passport');
-const LocalStrategy = require('passport-local');
-const bcrypt = require('bcrypt')
-const User = require('./models/User')
-const express = require('express');
+import { randomQuoteHandler } from "./routes/quotes.js";
+import mongoose from 'mongoose';
+import session from 'express-session';
+import passport from 'passport';
+import LocalStrategy from 'passport-local';
+import bcrypt from 'bcrypt';
+import express from 'express';
+import * as UserModel from './models/User.js';
+const User = UserModel.default || UserModel.User || UserModel;
+
 const app = express();
 app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(express.static('public'));
+
+app.get("/api/random-quote", randomQuoteHandler);
+console.log('✅ Random quote API ready at /api/random-quote');
 
 app.get('/', (req, res) => {
     res.render('index');
@@ -72,12 +79,14 @@ passport.use(new LocalStrategy(async (username, password, done) => {
     return done(null, user);
 }));
 
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
 passport.deserializeUser(async (id, done) => {
     const user = await User.findById(id);
     done(null, user);
-})
-
-app.use(express.urlencoded({extended: false}))
+}) 
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

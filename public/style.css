@@ -1,123 +1,327 @@
-/* Import in your HTML head:
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-*/
+:root {
+    /* Brand */
+    --brand-teal: #2563eb;          /* primary blue */
+    /* primary */
+    --brand-teal-600: #1d4ed8;      /* darker blue */
+    --brand-teal-700: #1e40af;      /* deepest blue */
+    --brand-deep: #020617;          /* near-black navy */
+    --brand-cream: #f3f4f6;         /* soft light gray */
+    --brand-purple: #8b5cf6;        /* warm accent purple */
+    /* accent */
+    --brand-purple-600: #7c3aed;    /* darker accent purple */
+    --ink-900: #0f172a;             /* headlines */
+    --ink-700: #1f2937;             /* body text */
+    --ink-500: #6b7280;             /* muted text */
+    --white: #ffffff;
+
+    /* Layout */
+    --container-w: 1000px;
+    --radius: 12px;
+    --shadow: 0 10px 30px rgba(0, 0, 0, .15);
+
+    /* Typography */
+    --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    --fs-base: 16px;
+    --lh: 1.65;
+}
+
+/* --------------------
+   Base
+-------------------- */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--fs-base);
+}
+
 body {
-    font-family: 'Inter', Arial, sans-serif;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #00809D;
-    color: #ffffff;
-    font-size: 16px;
-    line-height: 1.6;
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--ink-700);
+    line-height: var(--lh);
+    background: radial-gradient(1200px 600px at 10% -10%, rgba(37, 99, 235, 0.18), transparent),
+        radial-gradient(1000px 500px at 110% 10%, rgba(139, 92, 246, 0.14), transparent),
+        linear-gradient(180deg, #f3f4f6 0%, #e5e7eb 100%);
+    min-height: 100vh;
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 .wrapper {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 24px;
 }
 
-/* This makes all headers sticky so don't put anything else in the header */
+.container {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 40px;
+    max-width: var(--container-w);
+    margin: 40px auto;
+    box-shadow: var(--shadow);
+}
+
+/* Focus states for accessibility */
+:where(a, button, [tabindex]) :focus,
+:where(a, button, [tabindex]):focus {
+    outline: 3px solid color-mix(in oklab, var(--brand-purple), white 10%);
+    outline-offset: 3px;
+}
+
+/* --------------------
+   Header & Navigation
+-------------------- */
 header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: #FF7601; /* or white */
+    backdrop-filter: saturate(140%) blur(6px);
 }
 
-footer {
-    text-align: center;
-}
-
-nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* The css for the header */
 .topnav {
-    background-color: #FF7601;
-    overflow: hidden;
+    background: linear-gradient(90deg, var(--brand-teal) 0%, var(--brand-deep) 100%);
+    padding: 10px 12px;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .15);
 }
 
 .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
+    color: var(--white);
     text-decoration: none;
-    font-size: 17px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    display: inline-block;
+    border-radius: 8px;
+    transition: transform .15s ease, background-color .2s ease, color .2s ease;
 }
 
 .topnav a:hover {
-    background-color: #FCECDD;
-    color: black;
+    background: color-mix(in oklab, var(--white), transparent 85%);
+    color: #0b2d36;
+    transform: translateY(-1px);
 }
 
 .topnav a.split {
     float: right;
-    background-color: #F3A26D;
-    color: white;
+    background: var(--brand-purple);
+    color: var(--white);
 }
 
-.topnav a.split a:hover {
-    float: right;
-    color: #FF7601;
+.topnav a.split:hover {
+    background: var(--brand-purple-600);
+    color: var(--white);
+}
+
+nav a {
+    margin: 0 6px;
+}
+
+/* --------------------
+   Hero
+-------------------- */
+.hero.container {
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+    padding: 56px 28px;
 }
 
+.hero.container h1 {
+    color: var(--ink-900);
+    font-size: clamp(1.8rem, 2.2vw + 1.2rem, 3rem);
+    margin: 0 0 8px;
+    letter-spacing: .2px;
+}
 
+.hero.container p {
+    color: var(--ink-500);
+    font-weight: 600;
+    margin: 0 0 22px;
+}
 
-/* Button styling */
+/* Button system */
 .button {
-    background-color: #FF7601;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
+    --btn-bg: var(--brand-purple);
+    --btn-fg: var(--white);
+    border: 0;
+    border-radius: 999px;
+    padding: 12px 20px;
+    background: var(--btn-bg);
+    color: var(--btn-fg);
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 700;
+    letter-spacing: .3px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(139, 92, 246, .25);
+    transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease;
 }
 
 .button:hover {
-    background-color: #F3A26D;
-    color: black;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 26px rgba(139, 92, 246, .28);
 }
 
-/* Card-style content blocks */
+.button--ghost {
+    --btn-bg: transparent;
+    --btn-fg: var(--brand-purple);
+    border: 2px solid var(--brand-purple);
+    box-shadow: none;
+}
+
+.button--light {
+    --btn-bg: var(--brand-cream);
+    --btn-fg: var(--brand-deep);
+}
+
+/* --------------------
+   Cards & Sections
+-------------------- */
 .card {
-    background-color: #FCECDD;
-    color: #333;
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: var(--brand-cream);
+    color: var(--ink-900);
+    padding: 24px 28px;
+    margin: 28px auto;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
     max-width: 750px;
 }
 
-/* Professional footer */
-footer {
-    background-color: #004D5A;
-    color: #f2f2f2;
-    padding: 20px 0;
-    font-size: 14px;
+.about-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 14px 0 0;
 }
 
-.container {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 40px;
-    max-width: 1000px;
-    margin: 40px auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    color: #333;
+.about-list li {
+    padding-left: 28px;
+    position: relative;
+    margin: 8px 0;
+}
+
+.about-list li::before {
+    content: "♪";
+    /* musical note bullet */
+    position: absolute;
+    left: 0;
+    top: 0.05rem;
+    color: var(--brand-teal);
+    font-weight: 700;
+}
+
+/* Quote / Verse block */
+.quote-block {
+    border-left: 6px solid var(--brand-teal);
+    padding: 24px 28px;
+}
+
+#verse-text em {
+    font-style: italic;
+    color: var(--ink-900);
+}
+
+#verse-ref {
+    color: var(--ink-500);
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.verse-attribution {
+    color: var(--ink-500);
+    margin-top: 12px;
+    font-size: .85rem;
+}
+
+/* CTA Section */
+.cta.container {
+    text-align: center;
+    padding: 44px 28px;
+}
+
+.cta.container h2 {
+    margin-top: 0;
+    color: var(--ink-900);
+}
+
+.cta .button {
+    margin-top: 12px;
+}
+
+/* --------------------
+   Footer
+-------------------- */
+footer {
+    background: var(--brand-deep);
+    color: var(--white);
+    padding: 24px 0;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+footer a {
+    color: var(--brand-cream);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --------------------
+   Utilities
+-------------------- */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* --------------------
+   Responsive
+-------------------- */
+@media (max-width: 720px) {
+    .container {
+        padding: 24px;
+        margin: 24px 12px;
+    }
+
+    .card {
+        padding: 20px;
+        margin: 20px 12px;
+    }
+
+    .topnav {
+        padding: 8px;
+    }
+
+    .topnav a {
+        padding: 10px 10px;
+        font-size: 0.93rem;
+    }
+}
+
+/* --------------------
+   Motion preferences
+-------------------- */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
 }

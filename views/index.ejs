@@ -4,44 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <title>Coleman Website</title>
+    <title>Coleman Stone — Music Instructor & Composer</title>
 </head>
-<%- include('partials/header') %>
 
-    <body>
+<body>
+    <%- include('partials/header') %>
 
         <section class="hero container">
             <h1>Hello, I’m Coleman Stone</h1>
-            <p>Music Instructor | Developer | IT Professional</p>
+            <p>Music Instructor • Composer • Developer</p>
             <a href="#about" class="button">Learn More</a>
         </section>
 
         <section id="about" class="card">
             <h2>About Me</h2>
-            <p>I teach people of all ages to play the piano, guitar, and drums. Along with that I also work as a IT
-                Proffesional
-                helping people with whatever computer problems that show up. While I am doing all of that work I also
-                volunteer at
-                my local church by playing in the worship band along with being the tech lead and leader for the student
-                ministry basically
-                every Sunday night.
-            </p>
+            <p>I’m a music instructor who teaches piano, guitar, and drums to students of all ages. My approach starts
+                with rock‑solid fundamentals and technique, then adapts to each student’s goals—whether that’s worship,
+                classical, rock, or just learning for fun.</p>
+            <p>I also serve at my local church—playing in the worship band and helping lead production for our student
+                ministry every Sunday night.</p>
+            <ul class="about-list">
+                <li><strong>Lessons offered:</strong> Piano, Guitar, Drums</li>
+                <li><strong>Formats:</strong> Weekly private lessons • Beginner to advanced</li>
+                <li><strong>Focus:</strong> Technique, musicality, and student‑driven goals</li>
+            </ul>
         </section>
 
-        <section class="quote-block container">
-            <p>“Dear friend, do not imitate what is evil but what is good. Anyone who does what is good is from God.
-                Anyone who does what is evil has not seen God.” 3 John 1:11 NIV</p>
+        <section class="quote-block container" id="quote-block" aria-live="polite">
+            <p id="quote-text"><em>Loading quote…</em></p>
+            <p id="quote-author"></p>
         </section>
 
         <section class="cta container">
             <h2>Let’s Connect</h2>
-            <p>Want to contact me. Email would be the best way!</p>
-            <a href="colemanstone108@gmail.com" class="button">Email Me</a>
+            <p>The best way to reach me is by email.</p>
+            <a href="mailto:colemanstone108@gmail.com" class="button">Email Me</a>
         </section>
 
         <footer>
             <p>© 2025 Coleman Stone. Built by me.</p>
         </footer>
-    </body>
+
+        <script id="ssr-quote" type="application/json"><%- JSON.stringify(typeof quote !== 'undefined' ? quote : null) %></script>
+
+        <script>
+            (function () {
+                const textEl = document.getElementById('quote-text');
+                const authorEl = document.getElementById('quote-author');
+
+                function render(q) {
+                    if (!q) return;
+                    const text = (q.text || '').toString().trim();
+                    const author = (q.author || '').toString().trim();
+                    if (text) textEl.innerHTML = `<em>${text}</em>`;
+                    if (author) authorEl.textContent = `— ${author}`;
+                }
+
+                // read server-provided JSON safely (avoids VS Code JS parser errors)
+                let ssr = null;
+                const holder = document.getElementById('ssr-quote');
+                if (holder && holder.textContent.trim()) {
+                    try { ssr = JSON.parse(holder.textContent); } catch { ssr = null; }
+                }
+
+                if (ssr) {
+                    render(ssr);
+                } else {
+                    fetch('/api/random-quote', { cache: 'no-store' })
+                        .then(r => r.ok ? r.json() : Promise.reject(r.status))
+                        .then(render)
+                        .catch(() => { textEl.textContent = 'Unable to load quote.'; });
+                }
+            })();
+        </script>
+</body>
 
 </html>
