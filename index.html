@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=QuickSand:500" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/0a48c3a8e0.js" crossorigin="anonymous"></script>
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+        $(window).on('scroll', function () {
+            if ($(window).scrollTop()) {
+                $('nav').addClass('black');
+            }
+            else {
+                $('nav').removeClass('black');
+            }
+        })
+        $(function () {
+            $("#NavBar").load("navbar.html");
+        });
+    </script>
+</head>
+
+<body>
+    <div id="NavBar"></div>
+    <div class="wrapper">
+        <section class="sec1"></section>
+        <section class="content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam sunt adipisci beatae placeat quaerat
+                atque asperiores rerum nobis repellendus dolorum. Tenetur, dolor! Hic laborum, minima consequatur
+                tempora rem voluptate magnam!</p>
+        </section>
+    </div>
+</body>
+
+</html>
