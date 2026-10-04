@@ -1,39 +1,168 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=QuickSand:500" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/0a48c3a8e0.js" crossorigin="anonymous"></script>
-    <script src="jquery.js"></script>
-    <script type="text/javascript">
-        $(window).on('scroll', function () {
-            if ($(window).scrollTop()) {
-                $('nav').addClass('black');
-            }
-            else {
-                $('nav').removeClass('black');
-            }
-        })
-        $(function () {
-            $("#NavBar").load("navbar.html");
-        });
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of Coleman Stone, an Indiana University Kokomo IT graduate, front-end developer, musician, and IT professional.">
+    <title>Coleman Stone | Front-End Developer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div id="NavBar"></div>
-    <div class="wrapper">
-        <section class="sec1"></section>
-        <section class="content">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam sunt adipisci beatae placeat quaerat
-                atque asperiores rerum nobis repellendus dolorum. Tenetur, dolor! Hic laborum, minima consequatur
-                tempora rem voluptate magnam!</p>
+    <header class="site-header">
+        <nav class="nav-container" aria-label="Main navigation">
+            <a class="brand" href="#home">Coleman Stone</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#music">Music</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <p class="eyebrow">Front-End Developer · IT Professional · Musician</p>
+                <h1>I build clear, responsive web experiences.</h1>
+                <p class="hero-text">I am an Indiana University Kokomo IT graduate pursuing front-end development
+                    opportunities. I combine practical problem-solving, technical support experience, and a creative eye
+                    shaped by music and audio production.</p>
+                <div class="button-group">
+                    <a class="button button-primary" href="#projects">View Projects</a>
+                    <a class="button button-secondary" href="Coleman_Stone_Resume.pdf" target="_blank"
+                        rel="noopener">View Résumé</a>
+                </div>
+            </div>
         </section>
-    </div>
+
+        <section id="about" class="section">
+            <div class="container">
+                <p class="section-label">About Me</p>
+                <h2>Technical problem-solver with a creative perspective.</h2>
+                <div class="two-column">
+                    <p>I earned my degree in Information Technology from Indiana University Kokomo and am focused on
+                        building a career in front-end development. I enjoy creating websites that are responsive,
+                        accessible, and easy for people to use.</p>
+                    <p>Alongside development and IT work, I am a musician with experience in performance, production,
+                        audio mixing, and teaching. That background has strengthened my attention to detail,
+                        communication, and ability to turn ideas into finished work.</p>
+                </div>
+                <ul class="skills-list" aria-label="Skills">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Responsive Design</li>
+                    <li>Git &amp; GitHub</li>
+                    <li>Accessibility</li>
+                    <li>IT Support</li>
+                    <li>Audio Production</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects" class="section section-dark">
+            <div class="container">
+                <p class="section-label">Featured Work</p>
+                <h2>Projects I have built.</h2>
+                <div class="card-grid">
+                    <article class="project-card">
+                        <div class="card-visual card-visual-code" aria-hidden="true">&lt;/&gt;</div>
+                        <div class="card-content">
+                            <h3>Personal Portfolio</h3>
+                            <p>A responsive personal website designed to present my front-end work, technical
+                                background, résumé, and music in one accessible place.</p>
+                            <p class="tech-list">HTML · CSS · GitHub Pages</p>
+                            <div class="card-links"><a href="https://github.com/ColemanStone/ColemanStone.github.io"
+                                    target="_blank" rel="noopener noreferrer">View Code</a></div>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <div class="card-visual card-visual-grid" aria-hidden="true">Color War</div>
+                        <div class="card-content">
+                            <h3>Color War Game</h3>
+                            <p>A Python simulation where colored factions compete for territory, form mergers,
+                                and face rebellions and disasters. Run the original simulation in your browser.</p>
+                            <p class="tech-list">Python · Pygame · WebAssembly</p>
+                            <div class="card-links">
+                                <a href="/colorwar/">Play Color War</a>
+                                <a href="https://github.com/ColemanStone/ColorWarGame" target="_blank" rel="noopener"
+                                    rel="noopener noreferrer">View Code</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card project-card-next">
+                        <div class="card-visual card-visual-grid" aria-hidden="true">02</div>
+                        <div class="card-content">
+                            <h3>Next Project</h3>
+                            <p>A music-related project—such as a practice tracker, event finder, or setlist
+                                planner—would connect your front-end and music experience especially well.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="music" class="section">
+            <div class="container">
+                <p class="section-label">Music</p>
+                <h2>Music, production, and performance.</h2>
+                <p class="section-intro">Music has been a major part of my life for more than 15 years. My experience
+                    includes performance, composition, arrangement, production, mixing, audio technology, and music
+                    instruction.</p>
+                <div class="featured-release">
+                    <div class="release-artwork" aria-hidden="true"><span>CS</span></div>
+                    <div class="release-details">
+                        <p class="section-label">Available Everywhere</p>
+                        <h3>Listen to my music on your preferred platform.</h3>
+                        <p>My releases are available across major streaming services. Use the links below to find my
+                            artist profile and latest music.</p>
+                        <!-- Replace the destination URLs below with your verified artist or smart-link URLs before publishing. -->
+                        <div class="music-links" aria-label="Music streaming links">
+                            <a class="button button-primary" href="https://hyperfollow.com/StoneColeman" target="_blank" rel="noopener noreferrer">Get Music Links</a>
+                            <a class="button button-secondary" href="https://open.spotify.com/artist/3BJnx7yEZ5U4hS5E5FacK5" target="_blank" rel="noopener noreferrer">Spotify</a>
+                            <a class="button button-secondary" href="https://music.apple.com/us/artist/stonecoleman/1565676656" target="_blank" rel="noopener noreferrer">Apple Music</a>
+                            <a class="button button-secondary" href="https://www.youtube.com/@RealStoneColeman" target="_blank" rel="noopener noreferrer">YouTube</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="small-text music-note">Platform links will be added once the artist URLs are confirmed. This
+                    avoids sending visitors to the wrong artist profile.</p>
+            </div>
+        </section>
+
+        <section id="resume" class="section section-dark">
+            <div class="container center-content">
+                <p class="section-label">Résumé</p>
+                <h2>Interested in working together?</h2>
+                <p>Download my résumé to learn more about my front-end, IT, and professional experience.</p>
+                <a class="button button-primary" href="Coleman_Stone_Resume.pdf" target="_blank" rel="noopener">Download
+                    Résumé</a>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container center-content">
+                <p class="section-label">Contact</p>
+                <h2>Let’s connect.</h2>
+                <p>I am open to front-end developer, junior web developer, and related IT opportunities.</p>
+                <div class="contact-links">
+                    <a href="mailto:Stonecoleman4563@gmail.com">Email Me</a>
+                    <a href="https://github.com/ColemanStone" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/coleman-stone-aa08a61b3" target="_blank"
+                        rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Coleman Stone. Built with HTML and CSS.</p>
+    </footer>
 </body>
 
 </html>
