@@ -8,9 +8,16 @@
         content="Portfolio of Coleman Stone, an Indiana University Kokomo IT graduate, front-end developer, musician, and IT professional.">
     <title>Coleman Stone | Front-End Developer</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#98473e">
+    <meta property="og:title" content="Coleman Stone | Development &amp; Music">
+    <meta property="og:description" content="Explore my front-end projects, run the Color War simulation, and discover my music.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://colemanstone.github.io/">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
         <nav class="nav-container" aria-label="Main navigation">
             <a class="brand" href="#home">Coleman Stone</a>
@@ -24,7 +31,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main">
         <section id="home" class="hero">
             <div class="container hero-content">
                 <p class="eyebrow">Front-End Developer · IT Professional · Musician</p>
@@ -77,6 +84,9 @@
                             <p>A responsive personal website designed to present my front-end work, technical
                                 background, résumé, and music in one accessible place.</p>
                             <p class="tech-list">HTML · CSS · GitHub Pages</p>
+                            <details class="project-details"><summary>Inside the project</summary>
+                                <p>A single place to explore my development work, music, and professional background. Built with HTML and CSS, with small JavaScript enhancements for navigation and sharing.</p>
+                            </details>
                             <div class="card-links"><a href="https://github.com/ColemanStone/ColemanStone.github.io"
                                     target="_blank" rel="noopener noreferrer">View Code</a></div>
                         </div>
@@ -84,23 +94,19 @@
                     <article class="project-card">
                         <div class="card-visual card-visual-grid" aria-hidden="true">Color War</div>
                         <div class="card-content">
+                            <p class="project-tag">Interactive simulation</p>
                             <h3>Color War Game</h3>
                             <p>A Python simulation where colored factions compete for territory, form mergers,
                                 and face rebellions and disasters. Run the original simulation in your browser.</p>
                             <p class="tech-list">Python · Pygame · WebAssembly</p>
+                            <details class="project-details"><summary>Inside the project</summary>
+                                <p>200 factions compete in a changing world of alliances, mutations, and disasters. The Python simulation runs in your browser through WebAssembly.</p>
+                                <p>Explore a live world, pause to inspect it, and save your progress in the browser.</p>
+                            </details>
                             <div class="card-links">
                                 <a href="/colorwar/">Play Color War</a>
-                                <a href="https://github.com/ColemanStone/ColorWarGame" target="_blank" rel="noopener"
-                                    rel="noopener noreferrer">View Code</a>
+                                <a href="https://github.com/ColemanStone/ColorWarGame" target="_blank" rel="noopener noreferrer">View Code</a>
                             </div>
-                        </div>
-                    </article>
-                    <article class="project-card project-card-next">
-                        <div class="card-visual card-visual-grid" aria-hidden="true">02</div>
-                        <div class="card-content">
-                            <h3>Next Project</h3>
-                            <p>A music-related project—such as a practice tracker, event finder, or setlist
-                                planner—would connect your front-end and music experience especially well.</p>
                         </div>
                     </article>
                 </div>
@@ -121,17 +127,15 @@
                         <h3>Listen to my music on your preferred platform.</h3>
                         <p>My releases are available across major streaming services. Use the links below to find my
                             artist profile and latest music.</p>
-                        <!-- Replace the destination URLs below with your verified artist or smart-link URLs before publishing. -->
+
                         <div class="music-links" aria-label="Music streaming links">
-                            <a class="button button-primary" href="https://hyperfollow.com/StoneColeman" target="_blank" rel="noopener noreferrer">Get Music Links</a>
+                            <a class="button button-primary" href="https://hyperfollow.com/StoneColeman" target="_blank" rel="noopener noreferrer">Listen Everywhere</a>
                             <a class="button button-secondary" href="https://open.spotify.com/artist/3BJnx7yEZ5U4hS5E5FacK5" target="_blank" rel="noopener noreferrer">Spotify</a>
                             <a class="button button-secondary" href="https://music.apple.com/us/artist/stonecoleman/1565676656" target="_blank" rel="noopener noreferrer">Apple Music</a>
                             <a class="button button-secondary" href="https://www.youtube.com/@RealStoneColeman" target="_blank" rel="noopener noreferrer">YouTube</a>
                         </div>
                     </div>
                 </div>
-                <p class="small-text music-note">Platform links will be added once the artist URLs are confirmed. This
-                    avoids sending visitors to the wrong artist profile.</p>
             </div>
         </section>
 
@@ -151,6 +155,7 @@
                 <h2>Let’s connect.</h2>
                 <p>I am open to front-end developer, junior web developer, and related IT opportunities.</p>
                 <div class="contact-links">
+                    <button class="copy-email" type="button" hidden>Copy email address</button>
                     <a href="mailto:Stonecoleman4563@gmail.com">Email Me</a>
                     <a href="https://github.com/ColemanStone" target="_blank" rel="noopener noreferrer">GitHub</a>
                     <a href="https://www.linkedin.com/in/coleman-stone-aa08a61b3" target="_blank"
@@ -163,6 +168,9 @@
     <footer class="site-footer">
         <p>© 2026 Coleman Stone. Built with HTML and CSS.</p>
     </footer>
+    <p id="copy-status" class="copy-status" role="status"></p>
+    <a class="back-top" href="#home" aria-label="Back to top">↑ Top</a>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
